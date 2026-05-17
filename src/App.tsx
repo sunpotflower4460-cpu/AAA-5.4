@@ -98,11 +98,6 @@ function App() {
     return () => window.clearTimeout(timer)
   }, [saveState])
 
-  useEffect(() => {
-    if (selectedNoteId && !notes.some((note) => note.id === selectedNoteId)) {
-      setSelectedNoteId(null)
-    }
-  }, [notes, selectedNoteId])
 
   const activeNote = useMemo(
     () => notes.find((note) => note.id === selectedNoteId) ?? null,

@@ -1,73 +1,108 @@
-# React + TypeScript + Vite
+# 残心 / Zanshin
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 書いたあとにも、心がそこに残るメモ帳。  
+> A note-taking app where the heart lingers, even after the writing ends.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## アプリ概要
 
-## React Compiler
+「残心」は、和の美意識・間・余白・静けさを大切にした、シンプルな iPhone-first のメモアプリです。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+多機能化ではなく、
+**静かに開く → 言葉を置く → 静かに保存される → また戻って読める** という最小体験を丁寧に整えています。
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## MVP機能
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- メモ一覧
+- メモ作成
+- メモ編集
+- メモ削除
+- 自動保存
+- 検索
+- お気に入り
+- localStorage 保存
+- iPhone 向けレスポンシブ UI
+- 日本語 / 英語を意識した文言
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### MVPで作らないもの
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- ログイン
+- クラウド同期
+- AI機能
+- 課金
+- Markdown完全対応
+- 複雑なタグ管理
+- 共同編集
+- 通知機能
+- 多機能な設定画面
+
+---
+
+## 技術構成
+
+- Vite
+- React
+- TypeScript
+- Tailwind CSS
+- localStorage
+
+将来的に PWA / Capacitor へ移行しやすいように、保存処理は `src/lib/storage.ts` に分離しています。
+
+---
+
+## セットアップ
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 開発起動
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+## ビルド
+
+```bash
+npm run build
+```
+
+## Lint
+
+```bash
+npm run lint
+```
+
+---
+
+## Cloudflare Pages 方針
+
+Phase 3 の途中では Cloudflare Pages へデプロイしません。
+MVP 完成後に以下が満たされた場合のみ、デプロイ準備を行います。
+
+- `npm run build` が成功している
+- MVP 機能が揃っている
+- README が更新されている
+- Phase 1 / Phase 2 の設計と大きくずれていない
+
+Cloudflare Pages の想定設定: 
+
+- Build command: `npm run build`
+- Build output directory: `dist`
+
+---
+
+## ドキュメント
+
+| ファイル | 内容 |
+|----------|------|
+| [docs/concept.md](docs/concept.md) | 「残心」の思想と世界観 |
+| [docs/design-system.md](docs/design-system.md) | UI / UX とデザインシステム |
+| [docs/mvp-spec.md](docs/mvp-spec.md) | MVP 仕様 |
+| [docs/development-phases.md](docs/development-phases.md) | 開発フェーズ |
+| [docs/audit-phase-2.md](docs/audit-phase-2.md) | Phase 2 監査結果 |
+| [.github/copilot-instructions.md](.github/copilot-instructions.md) | Cloud Agent / Copilot 向けルール |
