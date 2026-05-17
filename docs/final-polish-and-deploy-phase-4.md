@@ -1,10 +1,10 @@
 # Phase 4 Final Polish and Deploy Report
-## 目的
+## 目的 / Purpose
 MVPを公開可能な状態にするため、デバッグ、UI/UX微調整、build確認、Cloudflare Pages対応を行った。
 
 ---
 
-## 1. デバッグ結果
+## 1. デバッグ結果 / Debug Results
 確認した機能:
 - メモ作成: 正常
 - メモ編集: 正常
@@ -27,7 +27,7 @@ MVPを公開可能な状態にするため、デバッグ、UI/UX微調整、bui
 
 ---
 
-## 2. UI/UX微調整
+## 2. UI/UX微調整 / UI and UX Polish
 調整した内容:
 - iPhone幅でエディタの戻る・お気に入り・削除ボタンが窮屈になりにくいようにレイアウトを調整
 - 更新時刻と保存状態の表示をモバイルで縦方向に整え、視線移動を減らした
@@ -47,7 +47,7 @@ MVPを公開可能な状態にするため、デバッグ、UI/UX微調整、bui
 
 ---
 
-## 3. build確認
+## 3. build確認 / Build Verification
 - npm install: 成功
 - npm run build: 成功
 - npm run lint: 成功
@@ -69,13 +69,13 @@ Build output directory: dist
 
 ---
 
-## 5. 残っている課題
+## 5. 残っている課題 / Remaining Items
 - Cloudflare Pages が実際に接続済みかどうかの確認と、初回公開 URL の取得
 - 公開後の実機確認（Safari / iPhone）による最終タップ感の確認
 
 ---
 
-## 6. 総合判定
+## 6. 総合判定 / Overall Status
 公開可能
 
 理由:
@@ -83,7 +83,7 @@ build と lint は通過し、基本機能と主要な保存系フローも確�
 
 ---
 
-## 7. README更新
+## 7. README更新 / README Updates
 - 起動方法を `npm install` / `npm run dev` の流れで整理
 - build方法として `npm run build` を明記
 - Cloudflare Pages 設定と手動接続手順を追記

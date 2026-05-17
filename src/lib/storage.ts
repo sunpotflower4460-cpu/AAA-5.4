@@ -33,6 +33,22 @@ const clearNotesStorage = () => {
   }
 }
 
+const persistSanitizedNotes = (raw: string, notes: Note[]) => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  try {
+    if (window.localStorage.getItem(STORAGE_KEY) !== raw) {
+      return
+    }
+
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(notes))
+  } catch {
+    // Ignore repair errors so the editor remains usable.
+  }
+}
+
 export function loadNotes(): Note[] {
   if (typeof window === 'undefined') {
     return []
@@ -55,7 +71,7 @@ export function loadNotes(): Note[] {
     const validNotes = parsed.filter(isNote)
 
     if (validNotes.length !== parsed.length) {
-      saveNotes(validNotes)
+      persistSanitizedNotes(raw, validNotes)
     }
 
     return validNotes
