@@ -98,7 +98,6 @@ function App() {
     return () => window.clearTimeout(timer)
   }, [saveState])
 
-
   const activeNote = useMemo(
     () => notes.find((note) => note.id === selectedNoteId) ?? null,
     [notes, selectedNoteId],
