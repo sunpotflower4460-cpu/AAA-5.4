@@ -38,7 +38,9 @@ The goal is to make writing feel **quiet, spacious, and intentional**.
 
 - ✅ Audit the design from Phase 1
 - ✅ Create `docs/audit-phase-2.md`
+- ✅ Only adjust README / docs / `.github/copilot-instructions.md` when needed
 - ❌ Do not deploy
+- ❌ Do not start MVP implementation
 - ❌ Do not overbuild
 
 ### Phase 3
@@ -58,7 +60,9 @@ When implementation begins:
 - **Separate storage logic** into `lib/storage.ts` — never write to localStorage directly in components
 - Keep **design tokens centralized** (colors, spacing, fonts)
 - Use **responsive iPhone-first layout** with safe-area support
+- Keep touch targets comfortable on iPhone and avoid layouts that break when the keyboard is open
 - Prefer **localStorage at MVP stage**, structured for easy migration to IndexedDB
+- Build the MVP as a web app first, with a structure that can later move into **PWA / Capacitor**
 - **Avoid adding libraries unless necessary** — prefer built-in browser APIs
 
 ---
@@ -87,6 +91,13 @@ If a feature makes the app:
 
 **Do not add it in MVP.**
 
+Never add these in MVP unless the spec explicitly changes:
+- AI features
+- login/auth
+- cloud sync
+- payments
+- complex collaboration
+
 ---
 
 ## Design Guardrails
@@ -105,6 +116,9 @@ If a feature makes the app:
 - Not a productivity suite
 - Not a Markdown editor
 - Not a social app
+- Not an AI notebook
+- Not a sync-first app
+- Not a paid feature bundle
 - Not a Japanese theme park
 - Not a clone of Notion, Bear, or Obsidian
 
