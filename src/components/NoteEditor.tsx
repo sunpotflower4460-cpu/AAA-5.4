@@ -30,7 +30,7 @@ export function NoteEditor({
 
   return (
     <section className="flex min-h-[calc(100svh-42px)] flex-1 flex-col px-[21px] pb-[34px] pt-[21px] md:min-h-[calc(100svh-68px)] md:px-[34px] md:pt-[34px]">
-      <div className="flex items-center justify-between gap-[13px] border-b border-[var(--color-line)] pb-[13px]">
+      <div className="flex flex-wrap items-center gap-[13px] border-b border-[var(--color-line)] pb-[13px]">
         <button
           type="button"
           aria-label={`${copy.back} / Back to notes list`}
@@ -40,7 +40,7 @@ export function NoteEditor({
           ← {copy.back}
         </button>
 
-        <div className="flex items-center gap-[8px]">
+        <div className="ml-auto flex flex-wrap items-center justify-end gap-[8px]">
           <button
             type="button"
             aria-label={note.isFavorite ? `${copy.unfavorite} / Remove favorite` : `${copy.favorite} / Favorite note`}
@@ -66,7 +66,7 @@ export function NoteEditor({
         </div>
       </div>
 
-      <div className="mt-[21px] flex items-center justify-between gap-[13px] text-[13px] text-[var(--color-ink-muted)]">
+      <div className="mt-[21px] flex flex-col items-start gap-[8px] text-[13px] text-[var(--color-ink-muted)] sm:flex-row sm:items-center sm:justify-between sm:gap-[13px]">
         <div>
           <p>
             {copy.updated} {formatEditorTimestamp(note.updatedAt, note.locale)}
@@ -76,7 +76,7 @@ export function NoteEditor({
         <div
           aria-live="polite"
           className={[
-            'min-h-[34px] rounded-full border px-[13px] py-[8px] text-right transition duration-[400ms]',
+            'min-h-[34px] self-stretch rounded-full border px-[13px] py-[8px] text-left transition duration-[400ms] sm:self-auto sm:text-right',
             statusCopy
               ? 'border-[var(--color-line)] bg-white/70 opacity-100'
               : 'border-transparent bg-transparent opacity-0',

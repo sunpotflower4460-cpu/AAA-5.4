@@ -27,6 +27,8 @@
 - iPhone 向けレスポンシブ UI
 - 日本語 / 英語を意識した文言
 
+Phase 4 では、基本機能のデバッグ、保存まわりの安定化、iPhone 幅を優先した UI/UX の最終調整を実施済みです。
+
 ### MVPで作らないもの
 
 - ログイン
@@ -53,19 +55,14 @@
 
 ---
 
-## セットアップ
+## 起動方法
 
 ```bash
 npm install
-```
-
-## 開発起動
-
-```bash
 npm run dev
 ```
 
-## ビルド
+## build方法
 
 ```bash
 npm run build
@@ -79,20 +76,26 @@ npm run lint
 
 ---
 
-## Cloudflare Pages 方針
+## Cloudflare Pages 設定
 
-Phase 3 の途中では Cloudflare Pages へデプロイしません。
-MVP 完成後に以下が満たされた場合のみ、デプロイ準備を行います。
+Cloudflare Pages へ接続する場合は、GitHub リポジトリを Pages に接続したうえで以下を設定してください。
 
-- `npm run build` が成功している
-- MVP 機能が揃っている
-- README が更新されている
-- Phase 1 / Phase 2 の設計と大きくずれていない
+```txt
+Build command: npm run build
+Build output directory: dist
+```
 
-Cloudflare Pages の想定設定: 
+- 環境変数: 基本不要
+- デプロイ条件: `npm run build` 成功後のみ
+- 未接続の場合: 上記設定で Pages プロジェクトを作成し、初回デプロイ後に発行 URL を確認
 
-- Build command: `npm run build`
-- Build output directory: `dist`
+### 手動接続時の手順
+
+1. Cloudflare Dashboard で **Workers & Pages** → **Create application** → **Pages** を開く
+2. この GitHub リポジトリ `sunpotflower4460-cpu/AAA-5.4` を接続する
+3. Build command に `npm run build` を設定する
+4. Build output directory に `dist` を設定する
+5. 保存してデプロイし、生成された Pages URL を確認する
 
 ---
 
@@ -105,4 +108,5 @@ Cloudflare Pages の想定設定:
 | [docs/mvp-spec.md](docs/mvp-spec.md) | MVP 仕様 |
 | [docs/development-phases.md](docs/development-phases.md) | 開発フェーズ |
 | [docs/audit-phase-2.md](docs/audit-phase-2.md) | Phase 2 監査結果 |
+| [docs/final-polish-and-deploy-phase-4.md](docs/final-polish-and-deploy-phase-4.md) | Phase 4 最終調整・デプロイ記録 |
 | [.github/copilot-instructions.md](.github/copilot-instructions.md) | Cloud Agent / Copilot 向けルール |

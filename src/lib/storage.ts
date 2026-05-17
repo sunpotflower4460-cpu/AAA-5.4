@@ -21,6 +21,18 @@ const isNote = (value: unknown): value is Note => {
   )
 }
 
+const clearNotesStorage = () => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  try {
+    window.localStorage.removeItem(STORAGE_KEY)
+  } catch {
+    // Ignore cleanup errors so the editor remains usable.
+  }
+}
+
 export function loadNotes(): Note[] {
   if (typeof window === 'undefined') {
     return []
@@ -35,12 +47,20 @@ export function loadNotes(): Note[] {
 
     const parsed: unknown = JSON.parse(raw)
 
-    if (!Array.isArray(parsed) || !parsed.every(isNote)) {
+    if (!Array.isArray(parsed)) {
+      clearNotesStorage()
       return []
     }
 
-    return parsed
+    const validNotes = parsed.filter(isNote)
+
+    if (validNotes.length !== parsed.length) {
+      saveNotes(validNotes)
+    }
+
+    return validNotes
   } catch {
+    clearNotesStorage()
     return []
   }
 }
