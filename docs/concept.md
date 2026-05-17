@@ -31,7 +31,7 @@
 
 この循環を、アプリ全体で大切にする。
 
-英語では、*Zen-inspired writing* / *Mindful notes* / *Calm journaling* と近いが、  
+英語では、*Zen-inspired writing* / *Mindful notes* / *Calm journaling* と近いが、
 単なる「禅風メモ帳」ではなく、**書く・保存する・読み返す、その全部に余韻が残ること**を目指す。
 
 ---
