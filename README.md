@@ -7,79 +7,92 @@
 
 ## アプリ概要
 
-「残心」は、和の美意識・間・余白・静けさを大切にした、シンプルなiOS向けメモアプリです。
+「残心」は、和の美意識・間・余白・静けさを大切にした、シンプルな iPhone-first のメモアプリです。
 
-大量の機能で埋めるのではなく、  
-書くこと、読み返すこと、書いたあとに残る余韻を美しくすることを目指します。
-
-一言でいえば、**「書いたあとにも、心がそこに残るメモ帳」**です。
-Japanese minimalism / mindful notes / write with stillness という感覚を、過剰な装飾ではなく体験そのもので伝えます。
-
----
-
-## ターゲット
-
-**日本向け**
-
-- シンプルで美しいメモ帳が欲しい人
-- 和のデザインが好きな人
-- 日記、詩、創作メモ、アイデアメモを書く人
-- 静かで落ち着いたUIを好む人
-
-**海外向け**
-
-- Japanese minimalism / Zen / Wabi-sabi
-- Samurai-inspired calm focus
-- Mindful writing / Calm journaling
+多機能化ではなく、
+**静かに開く → 言葉を置く → 静かに保存される → また戻って読める** という最小体験を丁寧に整えています。
 
 ---
 
 ## MVP機能
 
-| 機能 | 説明 |
-|------|------|
-| メモ一覧 | 書いたメモを静かに並べる |
-| メモ作成 | 新しい言葉を置く |
-| メモ編集 | 言葉を直す |
-| メモ削除 | 言葉を手放す |
-| 自動保存 | 静かに、気配なく保存する |
-| 検索 | 過去の言葉を手繰り寄せる |
-| お気に入り | 大切な言葉を残す |
-| ローカル保存 | まずはデバイスの中に |
-| iPhone向けUI | 手のひらに収まる静けさ |
-| 多言語文言設計 | 日本語・英語を意識した言葉づかい |
+- メモ一覧
+- メモ作成
+- メモ編集
+- メモ削除
+- 自動保存
+- 検索
+- お気に入り
+- localStorage 保存
+- iPhone 向けレスポンシブ UI
+- 日本語 / 英語を意識した文言
+
+### MVPで作らないもの
+
+- ログイン
+- クラウド同期
+- AI機能
+- 課金
+- Markdown完全対応
+- 複雑なタグ管理
+- 共同編集
+- 通知機能
+- 多機能な設定画面
 
 ---
 
-## 技術方針
+## 技術構成
 
-- **Vite** — 高速な開発環境
-- **React + TypeScript** — 型安全なコンポーネント設計
-- **Tailwind CSS** — 余白と間を制御しやすいユーティリティCSS
-- **localStorage / IndexedDB** — MVPはローカル保存から
-- **PWA対応** — ブラウザからでもiOS的体験を
-- **Capacitor（将来）** — ネイティブiOSアプリ化への備え
-- **iPhone-first** — タップしやすいサイズ、safe-area、キーボード表示時の使いやすさを優先
+- Vite
+- React
+- TypeScript
+- Tailwind CSS
+- localStorage
 
----
-
-## 開発フェーズ
-
-| フェーズ | 内容 | Cloudflareデプロイ |
-|----------|------|-------------------|
-| **Phase 1** | README/docsに設計を入れる | しない |
-| **Phase 2** | 監査フェーズ（設計確認・微修正） | しない |
-| **Phase 3** | MVPまで一気に作る | MVP完成後のみ |
-
-詳細は [docs/development-phases.md](docs/development-phases.md) を参照。
+将来的に PWA / Capacitor へ移行しやすいように、保存処理は `src/lib/storage.ts` に分離しています。
 
 ---
 
-## Cloudflare Pagesルール
+## セットアップ
 
-- Phase 1ではデプロイしない
-- Phase 2でもデプロイしない
-- **Phase 3のMVP完成後のみ**、必要に応じてCloudflare Pagesへのデプロイ準備を行う
+```bash
+npm install
+```
+
+## 開発起動
+
+```bash
+npm run dev
+```
+
+## ビルド
+
+```bash
+npm run build
+```
+
+## Lint
+
+```bash
+npm run lint
+```
+
+---
+
+## Cloudflare Pages 方針
+
+Phase 3 の途中では Cloudflare Pages へデプロイしません。
+MVP 完成後に以下が満たされた場合のみ、デプロイ準備を行います。
+
+- `npm run build` が成功している
+- MVP 機能が揃っている
+- README が更新されている
+- Phase 1 / Phase 2 の設計と大きくずれていない
+
+Cloudflare Pages の想定設定: 
+
+- Build command: `npm run build`
+- Build output directory: `dist`
 
 ---
 
@@ -88,7 +101,8 @@ Japanese minimalism / mindful notes / write with stillness という感覚を、
 | ファイル | 内容 |
 |----------|------|
 | [docs/concept.md](docs/concept.md) | 「残心」の思想と世界観 |
-| [docs/design-system.md](docs/design-system.md) | UI/UXとデザインシステム |
-| [docs/mvp-spec.md](docs/mvp-spec.md) | MVP仕様 |
+| [docs/design-system.md](docs/design-system.md) | UI / UX とデザインシステム |
+| [docs/mvp-spec.md](docs/mvp-spec.md) | MVP 仕様 |
 | [docs/development-phases.md](docs/development-phases.md) | 開発フェーズ |
-| [.github/copilot-instructions.md](.github/copilot-instructions.md) | Cloud Agent / Copilot向け作業ルール |
+| [docs/audit-phase-2.md](docs/audit-phase-2.md) | Phase 2 監査結果 |
+| [.github/copilot-instructions.md](.github/copilot-instructions.md) | Cloud Agent / Copilot 向けルール |

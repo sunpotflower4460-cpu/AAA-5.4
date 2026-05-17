@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+
+:root {
+  --color-washi: #f7f1e5;
+  --color-paper: #fbf8f1;
+  --color-sumi: #1f1b18;
+  --color-ink-muted: #5f5750;
+  --color-gold: #c9a646;
+  --color-indigo: #243b53;
+  --color-vermilion: #b14a36;
+  --color-line: rgba(31, 27, 24, 0.12);
+  --color-shadow: rgba(31, 27, 24, 0.08);
+  --font-serif:
+    'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'Noto Serif', serif;
+  --font-sans: 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-sumi);
+  background: var(--color-washi);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-height: 100%;
+    background: var(--color-washi);
+  }
+
+  body {
+    min-height: 100svh;
+    margin: 0;
+    font-family: var(--font-sans);
+    background:
+      radial-gradient(circle at top right, rgba(201, 166, 70, 0.09), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(247, 241, 229, 0.96));
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.34), transparent 22%),
+      radial-gradient(circle at 80% 10%, rgba(36, 59, 83, 0.04), transparent 24%);
+    mix-blend-mode: soft-light;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  input,
+  textarea {
+    border: 0;
+  }
+
+  textarea {
+    field-sizing: content;
+  }
+
+  #root {
+    min-height: 100svh;
+  }
+
+  ::selection {
+    background: rgba(201, 166, 70, 0.25);
+  }
+}
+
+@layer components {
+  .app-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(201, 166, 70, 0.09), transparent 18%),
+      radial-gradient(circle at 18% 82%, rgba(36, 59, 83, 0.05), transparent 20%);
+    pointer-events: none;
+  }
+}
