@@ -14,7 +14,7 @@ const getPreview = (body: string) => {
     return '…'
   }
 
-  return normalized.slice(0, 88)
+  return normalized.length > 96 ? `${normalized.slice(0, 96)}…` : normalized
 }
 
 export function NoteCard({ note, onOpen }: NoteCardProps) {
@@ -26,31 +26,38 @@ export function NoteCard({ note, onOpen }: NoteCardProps) {
       type="button"
       onClick={() => onOpen(note.id)}
       aria-label={`${title} を開く / Open note ${title}`}
-      className="group flex w-full items-start gap-[13px] rounded-[21px] border border-[var(--color-line)] bg-white/75 px-[21px] py-[21px] text-left shadow-[0_13px_34px_rgba(31,27,24,0.04)] transition duration-[300ms] hover:-translate-y-px hover:border-[var(--color-gold)] hover:bg-white"
+      className="group soft-fade-up relative flex w-full items-start gap-[13px] overflow-hidden rounded-[24px] border border-[rgba(31,27,24,0.08)] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(251,248,241,0.78))] px-[21px] py-[21px] text-left shadow-[0_21px_55px_-34px_rgba(31,27,24,0.32)] transition duration-[300ms] hover:-translate-y-px hover:border-[rgba(201,166,70,0.34)] hover:bg-white"
     >
       <span
         aria-hidden="true"
+        className="pointer-events-none absolute inset-x-[21px] top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.78),transparent)]"
+      />
+      <span
+        aria-hidden="true"
         className={[
-          'mt-[4px] h-[55px] w-[3px] rounded-full transition duration-[300ms]',
-          note.isFavorite ? 'bg-[var(--color-gold)]' : 'bg-[var(--color-line)]',
+          'mt-[4px] h-[55px] w-[2px] shrink-0 rounded-full transition duration-[300ms]',
+          note.isFavorite ? 'bg-[var(--color-gold)] shadow-[0_0_21px_rgba(201,166,70,0.28)]' : 'bg-[rgba(31,27,24,0.12)]',
         ].join(' ')}
       />
-      <span className="min-w-0 flex-1 space-y-[8px]">
+      <span className="min-w-0 flex-1 space-y-[13px]">
         <span className="flex items-start justify-between gap-[13px]">
-          <span className="line-clamp-2 font-serif text-[18px] leading-tight text-[var(--color-sumi)]">
+          <span className="line-clamp-2 font-serif text-[19px] leading-[1.45] text-[var(--color-sumi)]">
             {title}
           </span>
-          <span className="flex shrink-0 items-center gap-[8px] text-[13px] text-[var(--color-ink-muted)]">
+          <span className="flex shrink-0 items-center gap-[8px] rounded-full border border-[rgba(31,27,24,0.06)] bg-white/72 px-[8px] py-[4px] text-[12px] text-[var(--color-ink-muted)]">
             {note.isFavorite ? (
-              <span aria-hidden="true" className="text-[var(--color-gold)]">
-                ★
-              </span>
-            ) : null}
-            {formatUpdatedAt(note.updatedAt, note.locale)}
+              <span
+                aria-hidden="true"
+                className="inline-flex h-[8px] w-[8px] rounded-full bg-[var(--color-gold)] shadow-[0_0_13px_rgba(201,166,70,0.34)]"
+              />
+            ) : (
+              <span aria-hidden="true" className="h-[8px] w-[8px] rounded-full bg-[rgba(31,27,24,0.12)]" />
+            )}
+            <span className="whitespace-nowrap">{formatUpdatedAt(note.updatedAt, note.locale)}</span>
           </span>
         </span>
         <span
-          className="block text-[15px] leading-[1.618] text-[var(--color-ink-muted)]"
+          className="block text-[15px] leading-[1.75] text-[var(--color-ink-muted)]"
           style={{
             display: '-webkit-box',
             WebkitLineClamp: 3,
@@ -60,6 +67,14 @@ export function NoteCard({ note, onOpen }: NoteCardProps) {
         >
           {preview}
         </span>
+        {note.isFavorite ? (
+          <span className="inline-flex items-center gap-[8px] text-[12px] uppercase tracking-[0.16em] text-[var(--color-gold)]">
+            <span aria-hidden="true">
+                ★
+            </span>
+            treasured note
+          </span>
+        ) : null}
       </span>
     </button>
   )
