@@ -70,7 +70,7 @@ export function NotesList({
           <SearchBar value={searchQuery} onChange={onSearchChange} />
           {isSearching ? (
             <p className="px-[4px] text-[12px] uppercase tracking-[0.14em] text-[var(--color-ink-muted)]">
-              Searching through settled words
+              言葉を探しています / Searching through settled words
             </p>
           ) : null}
         </div>

@@ -72,7 +72,7 @@ export function NoteCard({ note, onOpen }: NoteCardProps) {
             <span aria-hidden="true">
                 ★
             </span>
-            treasured note
+            大切な余白 / Treasured note
           </span>
         ) : null}
       </span>
