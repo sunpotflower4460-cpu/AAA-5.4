@@ -7,7 +7,7 @@ type NoteCardProps = {
   onOpen: (id: string) => void
 }
 
-const MAX_PREVIEW_CHARS = 96
+const maxPreviewChars = 96
 
 const getPreview = (body: string) => {
   const normalized = body.replace(/\s+/g, ' ').trim()
@@ -16,8 +16,8 @@ const getPreview = (body: string) => {
     return '…'
   }
 
-  return normalized.length > MAX_PREVIEW_CHARS
-    ? `${normalized.slice(0, MAX_PREVIEW_CHARS)}…`
+  return normalized.length > maxPreviewChars
+    ? `${normalized.slice(0, maxPreviewChars)}…`
     : normalized
 }
 

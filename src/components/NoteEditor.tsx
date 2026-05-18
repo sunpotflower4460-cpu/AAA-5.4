@@ -69,7 +69,7 @@ export function NoteEditor({
 
         <div className="mt-[21px] flex flex-col gap-[13px] sm:flex-row sm:items-end sm:justify-between">
           <div className="space-y-[4px] text-[13px] text-[var(--color-ink-muted)]">
-            <p className="uppercase tracking-[0.18em] text-[12px]">静かな筆記 / Quiet editor</p>
+            <p className="uppercase tracking-[0.18em] text-[12px]">{copy.editorEyebrow}</p>
             <p>
               {copy.updated} {formatEditorTimestamp(note.updatedAt, note.locale)}
             </p>

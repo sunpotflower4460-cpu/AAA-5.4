@@ -19,6 +19,7 @@ export const copy = {
   untitledEn: 'Untitled space',
   titlePlaceholder: '題、あるいは無題。',
   bodyPlaceholder: 'ここに言葉を置いてください。',
+  editorEyebrow: '静かな筆記 / Quiet editor',
   back: '一覧へ戻る',
   favorite: 'お気に入りに留める',
   unfavorite: 'お気に入りを外す',
