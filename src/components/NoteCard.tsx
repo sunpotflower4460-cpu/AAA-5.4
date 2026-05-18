@@ -7,6 +7,8 @@ type NoteCardProps = {
   onOpen: (id: string) => void
 }
 
+const MAX_PREVIEW_LENGTH = 96
+
 const getPreview = (body: string) => {
   const normalized = body.replace(/\s+/g, ' ').trim()
 
@@ -14,7 +16,9 @@ const getPreview = (body: string) => {
     return '…'
   }
 
-  return normalized.length > 96 ? `${normalized.slice(0, 96)}…` : normalized
+  return normalized.length > MAX_PREVIEW_LENGTH
+    ? `${normalized.slice(0, MAX_PREVIEW_LENGTH)}…`
+    : normalized
 }
 
 export function NoteCard({ note, onOpen }: NoteCardProps) {
