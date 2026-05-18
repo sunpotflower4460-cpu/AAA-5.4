@@ -69,9 +69,7 @@ export function NoteCard({ note, onOpen }: NoteCardProps) {
         </span>
         {note.isFavorite ? (
           <span className="inline-flex items-center gap-[8px] text-[12px] uppercase tracking-[0.16em] text-[var(--color-gold)]">
-            <span aria-hidden="true">
-                ★
-            </span>
+            <span aria-hidden="true">★</span>
             大切な余白 / Treasured note
           </span>
         ) : null}

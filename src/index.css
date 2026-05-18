@@ -12,6 +12,7 @@
   --color-line: rgba(31, 27, 24, 0.12);
   --color-shadow: rgba(31, 27, 24, 0.08);
   --color-focus: rgba(201, 166, 70, 0.48);
+  --paper-texture-opacity: 0.018;
   --font-serif:
     'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'Noto Serif', serif;
   --font-sans: 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
@@ -56,8 +57,8 @@
       radial-gradient(circle at 80% 10%, rgba(36, 59, 83, 0.04), transparent 24%),
       repeating-linear-gradient(
         102deg,
-        rgba(31, 27, 24, 0.018) 0,
-        rgba(31, 27, 24, 0.018) 1px,
+        rgba(31, 27, 24, var(--paper-texture-opacity)) 0,
+        rgba(31, 27, 24, var(--paper-texture-opacity)) 1px,
         transparent 1px,
         transparent 8px
       );
