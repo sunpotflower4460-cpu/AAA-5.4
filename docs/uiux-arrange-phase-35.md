@@ -8,13 +8,13 @@ MVPのUI/UXを、残心らしい静けさ・余白・現代和の方向へ磨き
 - エディタ上部の操作帯と本文領域を静かに整理し、保存状態の余韻表現と本文の読み書きしやすさを強めた。
 
 ## 変更した主なファイル
-- /home/runner/work/AAA-5.4/AAA-5.4/src/index.css
-- /home/runner/work/AAA-5.4/AAA-5.4/src/components/NotesList.tsx
-- /home/runner/work/AAA-5.4/AAA-5.4/src/components/NoteEditor.tsx
-- /home/runner/work/AAA-5.4/AAA-5.4/src/components/NoteCard.tsx
-- /home/runner/work/AAA-5.4/AAA-5.4/src/components/SearchBar.tsx
-- /home/runner/work/AAA-5.4/AAA-5.4/src/components/EmptyState.tsx
-- /home/runner/work/AAA-5.4/AAA-5.4/src/components/AppShell.tsx
+- src/index.css
+- src/components/NotesList.tsx
+- src/components/NoteEditor.tsx
+- src/components/NoteCard.tsx
+- src/components/SearchBar.tsx
+- src/components/EmptyState.tsx
+- src/components/AppShell.tsx
 
 ## デザイン判断
 背景やカードは装飾を増やすのではなく、明度差・薄い影・細い線で現代和の質感を出した。  
