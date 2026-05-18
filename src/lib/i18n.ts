@@ -11,7 +11,7 @@ export const copy = {
   emptySubtitle: 'No words have settled yet.',
   emptyAction: '新しい余白をひらく',
   searchPlaceholder: '言葉を探す',
-  searchStatus: '言葉を探しています / Searching through settled words',
+  searchStatus: '言葉を探す / Searching through settled words',
   searchEmptyTitle: 'その言葉は、まだ見つかりません。',
   searchEmptySubtitle: 'No notes matched that stillness.',
   newNote: '新しい余白',

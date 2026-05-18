@@ -13,6 +13,13 @@
   --color-shadow: rgba(31, 27, 24, 0.08);
   --color-focus: rgba(201, 166, 70, 0.48);
   --paper-texture-line-opacity: 0.018;
+  --body-glow-white: radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.92), transparent 24%);
+  --body-glow-gold: radial-gradient(circle at 88% 8%, rgba(201, 166, 70, 0.11), transparent 20%);
+  --body-glow-indigo: radial-gradient(circle at 82% 72%, rgba(36, 59, 83, 0.08), transparent 26%);
+  --body-surface-gradient: linear-gradient(180deg, rgba(253, 250, 244, 0.96), rgba(247, 241, 229, 0.98));
+  --body-overlay-sheen: linear-gradient(rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.42));
+  --body-overlay-paper-light: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.34), transparent 22%);
+  --body-overlay-paper-depth: radial-gradient(circle at 80% 10%, rgba(36, 59, 83, 0.04), transparent 24%);
   --font-serif:
     'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'Noto Serif', serif;
   --font-sans: 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
@@ -39,10 +46,10 @@
     margin: 0;
     font-family: var(--font-sans);
     background:
-      radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.92), transparent 24%),
-      radial-gradient(circle at 88% 8%, rgba(201, 166, 70, 0.11), transparent 20%),
-      radial-gradient(circle at 82% 72%, rgba(36, 59, 83, 0.08), transparent 26%),
-      linear-gradient(180deg, rgba(253, 250, 244, 0.96), rgba(247, 241, 229, 0.98));
+      var(--body-glow-white),
+      var(--body-glow-gold),
+      var(--body-glow-indigo),
+      var(--body-surface-gradient);
   }
 
   body::before {
@@ -52,9 +59,9 @@
     pointer-events: none;
     opacity: 0.55;
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.42)),
-      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.34), transparent 22%),
-      radial-gradient(circle at 80% 10%, rgba(36, 59, 83, 0.04), transparent 24%),
+      var(--body-overlay-sheen),
+      var(--body-overlay-paper-light),
+      var(--body-overlay-paper-depth),
       repeating-linear-gradient(
         102deg,
         rgba(31, 27, 24, var(--paper-texture-line-opacity)) 0,
